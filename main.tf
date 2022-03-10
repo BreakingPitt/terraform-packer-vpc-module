@@ -1,8 +1,14 @@
+resource "time_static" "this" {}
+
 resource "aws_vpc" "this" {
-  cidr_block           = "${var.vpc_cidr_prefix}.0.0/16"
+  cidr_block           = "${var.cidr_prefix}.0.0/16"
   enable_dns_hostnames = true
 
   tags = {
+    Created_by = "Terraform"
+    Creation_date = time_static.this.rfc3339
+    Deployed_by = "Terraform"
+    Environment = var.environment
     Name = var.name
   }
 }
@@ -11,6 +17,10 @@ resource "aws_internet_gateway" "this" {
   vpc_id = aws_vpc.this.id
 
   tags = {
+    Created_by = "Terraform"
+    Creation_date = time_static.this.rfc3339
+    Deployed_by = "Terraform"
+    Environment = var.environment
     Name = var.name
   }
 }
@@ -24,6 +34,10 @@ resource "aws_route_table" "this" {
   }
 
   tags = {
+    Created_by = "Terraform"
+    Creation_date = time_static.this.rfc3339
+    Deployed_by = "Terraform"
+    Environment = var.environment
     Name = var.name
   }
 }
@@ -31,10 +45,14 @@ resource "aws_route_table" "this" {
 resource "aws_subnet" "this" {
   availability_zone       = element(data.aws_availability_zones.this.names, 0)
   vpc_id                  = aws_vpc.this.id
-  cidr_block              = "${var.vpc_cidr_prefix}.1.0/24"
+  cidr_block              = "${var.cidr_prefix}.0.0/24"
   map_public_ip_on_launch = true
 
   tags = {
+    Created_by = "Terraform"
+    Creation_date = time_static.this.rfc3339
+    Deployed_by = "Terraform"
+    Environment = var.environment
     Name = var.name
   }
 }
