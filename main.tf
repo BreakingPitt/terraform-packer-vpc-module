@@ -1,7 +1,7 @@
 resource "time_static" "this" {}
 
 resource "aws_vpc" "this" {
-  cidr_block           = "${var.cidr_prefix}.0.0/16"
+  cidr_block           = var.cidr_block
   enable_dns_hostnames = true
 
   tags = {
@@ -45,7 +45,7 @@ resource "aws_route_table" "this" {
 resource "aws_subnet" "this" {
   availability_zone       = element(data.aws_availability_zones.this.names, 0)
   vpc_id                  = aws_vpc.this.id
-  cidr_block              = "${var.cidr_prefix}.0.0/24"
+  cidr_block              = var.cidr_block
   map_public_ip_on_launch = true
 
   tags = {

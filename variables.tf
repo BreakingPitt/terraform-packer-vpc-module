@@ -1,5 +1,5 @@
-variable "cidr_prefix" {
-  default     = "10.72"
+variable "cidr_block" {
+  default     = "10.0.1.0"
   description = "The IP prefix to the CIDR block assigned to the VPC"
   type        = string
 }
