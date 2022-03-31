@@ -1,3 +1,3 @@
-data "aws_availability_zones" "this" {}
+data "aws_availability_zones" "default" {}
 
-data "aws_region" "this" {}
+data "aws_region" "default" {}
