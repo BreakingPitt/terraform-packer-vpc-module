@@ -6,8 +6,8 @@ repos:
     - id: terraform_validate
     - id: terraform_tflint
       args:
-        - --args=--config=./.tflint/tflint.hcl
+        - --args=--config=__GIT_WORKING_DIR__/.tflint/tflint.hcl
 
     - id: terraform_tfsec
       args:
-        - --args=--config-file=./.tfsec/config.yml
+        - --args=--config-file=__GIT_WORKING_DIR__/.tfsec/config.yml
