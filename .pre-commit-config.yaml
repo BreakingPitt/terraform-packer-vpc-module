@@ -7,4 +7,4 @@ repos:
     - id: terraform_tflint
     - id: terraform_tfsec
       args:
-        - --args=--config-file=.tfsec.yaml
+        - --args=--config-file=./.tfsec/config.yml
