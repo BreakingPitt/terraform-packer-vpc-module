@@ -6,3 +6,5 @@ repos:
     - id: terraform_validate
     - id: terraform_tflint
     - id: terraform_tfsec
+      args:
+        - --args=--config-file=.tfsec.yaml
