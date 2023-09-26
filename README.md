@@ -1,5 +1,63 @@
 
 <!-- BEGIN_TF_DOCS -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.5.2 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 5.6.2 |
+| <a name="requirement_http"></a> [http](#requirement\_http) | ~> 3.4.0 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | ~> 3.5.1 |
+| <a name="requirement_time"></a> [time](#requirement\_time) | ~> 0.9.1 |
+| <a name="requirement_tls"></a> [tls](#requirement\_tls) | ~> 4.0.4 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.6.2 |
+| <a name="provider_time"></a> [time](#provider\_time) | 0.9.1 |
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_label"></a> [label](#module\_label) | cloudposse/label/terraform | 0.8.0 |
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [aws_flow_log.vpc_flow_log](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/flow_log) | resource |
+| [aws_internet_gateway.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway) | resource |
+| [aws_route_table.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table) | resource |
+| [aws_route_table_association.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table_association) | resource |
+| [aws_subnet.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet) | resource |
+| [aws_vpc.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc) | resource |
+| [time_static.default](https://registry.terraform.io/providers/hashicorp/time/latest/docs/resources/static) | resource |
+| [aws_availability_zones.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) | data source |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_cidr_block"></a> [cidr\_block](#input\_cidr\_block) | The IP prefix to the CIDR block assigned to the VPC | `string` | `"10.0.1.0"` | no |
+| <a name="input_enable"></a> [enable](#input\_enable) | Flag to control the VPC creation. | `bool` | `true` | no |
+| <a name="input_enable_flow_log"></a> [enable\_flow\_log](#input\_enable\_flow\_log) | Enable VPC flow logs. | `bool` | `false` | no |
+| <a name="input_name"></a> [name](#input\_name) | The VPC name. | `string` | `"packer"` | no |
+| <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace can be your organization name or abbreviation. | `string` | `"Engine9.io"` | no |
+| <a name="input_s3_bucket_arn"></a> [s3\_bucket\_arn](#input\_s3\_bucket\_arn) | ARN of the S3 Bucket used to store the VPC flow logs. | `string` | `""` | no |
+| <a name="input_stage"></a> [stage](#input\_stage) | The stage, e.g. 'prod', 'staging', 'dev' | `string` | `""` | no |
+| <a name="input_traffic_type"></a> [traffic\_type](#input\_traffic\_type) | Type of traffic to capture. Valid values: ACCEPT, REJECT, ALL. | `string` | `"ALL"` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_internet_gateway_id"></a> [internet\_gateway\_id](#output\_internet\_gateway\_id) | The Id of the Internet Gateway. |
+| <a name="output_subnet_id"></a> [subnet\_id](#output\_subnet\_id) | Subnet Id |
+| <a name="output_vpc_cidr_block"></a> [vpc\_cidr\_block](#output\_vpc\_cidr\_block) | The CIDR block of the VPC. |
+| <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | VPC Id |
 <!-- END_TF_DOCS -->
 
 ## Examples
