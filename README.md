@@ -1,3 +1,42 @@
+# Terraform AWS VPC Module
+
+This Terraform module creates an AWS Virtual Private Cloud (VPC) that can be used in conjunction with the Packer AMI builder to create Amazon Machine Images (AMIs). The VPC includes essential resources like an Internet Gateway and subnets.
+
+## Table of Contents
+
+- [Prerequisites](#prerequisites)
+- [Usage](#usage)
+- [Inputs](#inputs)
+- [Outputs](#outputs)
+- [Examples](#examples)
+- [Contributing](#contributing)
+- [License](#license)
+- [Authors](#authors)
+
+## Prerequisites
+
+Before using this Terraform module, ensure you have the following prerequisites:
+
+- [Terraform](https://www.terraform.io/) installed (version >= 1.5.2)
+- AWS credentials configured for your environment
+- Basic understanding of AWS networking concepts
+
+## Usage
+
+To use this module, include it in your Terraform configuration. Here's an example of how to use it:
+
+```hcl
+module "vpc" {
+  source = "github.com/your-org/terraform-aws-vpc"
+
+  # Customize input variables as needed
+  cidr_block       = "10.0.1.0/16"
+  enable_flow_log  = false
+  name            = "packer"
+  namespace       = "Engine9.io"
+  stage           = "dev"
+  traffic_type    = "ALL"
+}
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -61,6 +100,9 @@
 <!-- END_TF_DOCS -->
 
 ## Examples
+
+You can find more usage examples in the [examples](./examples) directory.
+
 
 ## Contributing
 
