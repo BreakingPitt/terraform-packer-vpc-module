@@ -37,6 +37,7 @@ module "vpc" {
   stage           = "dev"
   traffic_type    = "ALL"
 }
+```
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
